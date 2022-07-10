@@ -6,8 +6,10 @@ import items from './constants/items';
 import {useState} from "react";
 
 function App(){
+
     const {products}=items;
     const[cartItems,setCartItems]=useState([]);
+
 
 
     const handleAdd = (product) => {
@@ -23,6 +25,7 @@ function App(){
         }
     };
 
+
     const handleRemove = (product) => {
         const existence = cartItems.find((x) => x.id === product.id);
         if (existence.qty === 1) {
@@ -37,7 +40,14 @@ function App(){
     };
 
 
-
+    const handleDelete=(product)=>{
+        const existence = cartItems.find ((x) => x.id === product.id);
+        if (existence.id === product.id) {
+            setCartItems(cartItems.filter((x)=> x.id !== product.id));
+        } else{
+            setCartItems(cartItems.map((x)=>x.id === product.id ? {...existence,qty:0}:x))
+        }
+    }
 
 
     return (
@@ -51,9 +61,8 @@ function App(){
             <p>
                 Edit <code>src/App.tsx</code> and save to reload.
             </p>
-
             <Main products={products} handleAdd={handleAdd} />
-            <Cart cartItems={cartItems} handleAdd={handleAdd} handleRemove={handleRemove} />
+            <Cart cartItems={cartItems} handleAdd={handleAdd} handleRemove={handleRemove} handleDelete={handleDelete}/>
         </div>
     );
 }
