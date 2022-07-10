@@ -1,0 +1,22 @@
+.grid {
+    margin: 0 auto;
+    flex-direction: column;
+    display: grid;
+    width: 600px;
+    height: 450px;
+    text-align: center;
+    grid-template-columns: repeat(3,30%);
+    grid-template-rows: repeat(2,45%);
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    overflow: hidden;
+
+}
+.row {
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: 0 auto;
+}
