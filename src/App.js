@@ -3,9 +3,11 @@ import './App.css';
 import Main from './components/Main';
 import Cart from'./components/Cart';
 import items from './constants/items';
+import {useState} from "react";
 
 function App(){
     const {products}=items;
+    const[cartItems,setCartItems]=useState([]);
 
 
     return (
@@ -24,4 +26,5 @@ function App(){
         </div>
     );
 }
+
 export default App;
